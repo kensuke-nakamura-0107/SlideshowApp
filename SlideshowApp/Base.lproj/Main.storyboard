@@ -15,30 +15,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QQo-mU-TOW">
-                                <rect key="frame" x="73" y="183" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QQo-mU-TOW">
+                                <rect key="frame" x="80" y="144" width="254" height="128"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="254" id="eiQ-4O-rzT"/>
+                                    <constraint firstAttribute="height" constant="128" id="ssn-F9-8zu"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="pwd-3G-nn9" appends="YES" id="AUe-cs-0vr"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERB-sw-s5P">
-                                <rect key="frame" x="192" y="404" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERB-sw-s5P">
+                                <rect key="frame" x="191.5" y="372" width="31" height="30"/>
                                 <state key="normal" title="再生"/>
+                                <connections>
+                                    <action selector="slideshow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NUF-FC-x5V"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-Qt-UJG">
-                                <rect key="frame" x="307" y="404" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-Qt-UJG">
+                                <rect key="frame" x="303" y="372" width="31" height="30"/>
                                 <state key="normal" title="次へ"/>
                                 <connections>
                                     <action selector="next_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qu4-15-zQr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCu-BL-Z8b">
-                                <rect key="frame" x="81" y="404" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCu-BL-Z8b">
+                                <rect key="frame" x="80" y="372" width="31" height="30"/>
                                 <state key="normal" title="前へ"/>
                                 <connections>
                                     <action selector="pre_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H9k-ni-nVP"/>
@@ -46,6 +49,19 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QQo-mU-TOW" secondAttribute="trailing" constant="80" id="2Gc-g7-D6X"/>
+                            <constraint firstItem="ERB-sw-s5P" firstAttribute="centerY" secondItem="kCu-BL-Z8b" secondAttribute="centerY" id="EqB-ov-edy"/>
+                            <constraint firstItem="WcT-Qt-UJG" firstAttribute="trailing" secondItem="QQo-mU-TOW" secondAttribute="trailing" id="Hl4-4r-JQo"/>
+                            <constraint firstItem="kCu-BL-Z8b" firstAttribute="leading" secondItem="QQo-mU-TOW" secondAttribute="leading" id="Itc-xK-LUF"/>
+                            <constraint firstItem="ERB-sw-s5P" firstAttribute="top" secondItem="QQo-mU-TOW" secondAttribute="bottom" constant="100" id="JgJ-Q8-ufO"/>
+                            <constraint firstItem="WcT-Qt-UJG" firstAttribute="centerY" secondItem="kCu-BL-Z8b" secondAttribute="centerY" id="MP6-Id-HwL"/>
+                            <constraint firstItem="QQo-mU-TOW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="SOo-3W-NQh"/>
+                            <constraint firstItem="QQo-mU-TOW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="n3x-g6-dTB"/>
+                            <constraint firstItem="QQo-mU-TOW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qVt-0B-TLA"/>
+                            <constraint firstItem="QQo-mU-TOW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="sVR-Dv-iOK"/>
+                            <constraint firstItem="ERB-sw-s5P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xPo-uh-7ZI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
@@ -72,20 +88,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtK-jQ-T8n">
-                                <rect key="frame" x="87" y="179" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BN9-Up-gAa">
-                                <rect key="frame" x="192" y="390" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BN9-Up-gAa">
+                                <rect key="frame" x="191.5" y="422" width="31" height="30"/>
                                 <state key="normal" title="戻る"/>
                                 <connections>
                                     <segue destination="voX-6F-wk4" kind="unwind" unwindAction="unwind:" id="7Zb-9e-NgJ"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gtK-jQ-T8n">
+                                <rect key="frame" x="10" y="100" width="394" height="222"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="222" id="T5U-6e-Mr4"/>
+                                    <constraint firstAttribute="width" constant="394" id="xCs-SR-FDg"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gtK-jQ-T8n" firstAttribute="leading" secondItem="iDL-Gv-fXr" secondAttribute="leading" constant="10" id="CZH-FH-4a9"/>
+                            <constraint firstItem="gtK-jQ-T8n" firstAttribute="top" secondItem="iDL-Gv-fXr" secondAttribute="top" constant="100" id="Gvs-xs-0ZX"/>
+                            <constraint firstItem="BN9-Up-gAa" firstAttribute="top" secondItem="gtK-jQ-T8n" secondAttribute="bottom" constant="100" id="HLS-ea-Gwk"/>
+                            <constraint firstItem="gtK-jQ-T8n" firstAttribute="top" secondItem="iDL-Gv-fXr" secondAttribute="top" constant="100" id="Lqb-e3-7ik"/>
+                            <constraint firstItem="iDL-Gv-fXr" firstAttribute="trailing" secondItem="gtK-jQ-T8n" secondAttribute="trailing" constant="10" id="RJl-vO-MqA"/>
+                            <constraint firstItem="gtK-jQ-T8n" firstAttribute="centerX" secondItem="vC1-5Y-OHp" secondAttribute="centerX" id="epe-fC-p7O"/>
+                            <constraint firstItem="BN9-Up-gAa" firstAttribute="centerX" secondItem="vC1-5Y-OHp" secondAttribute="centerX" id="pig-lA-G35"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iDL-Gv-fXr"/>
                     </view>
                     <navigationItem key="navigationItem" id="UhT-R2-J07"/>

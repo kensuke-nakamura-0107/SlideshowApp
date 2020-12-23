@@ -52,9 +52,53 @@ class ViewController: UIViewController {
                    viewimage.contentMode = UIView.ContentMode.scaleAspectFill
                }
     }
-    
-    
-    
+    //再生ボタンアクション
+    @IBAction func slideshow(_ sender: Any) {
+        on_off_fg += 1
+        on_off_fg %= 2
+        //再生中
+        if (on_off_fg == 0) {
+        // 動作中のタイマーを1つに保つために、 timer が存在しない場合だけ、タイマーを生成して動作させる
+            if (self.timer == nil)  {
+                self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(Change_img(_:)), userInfo: nil, repeats: true)
+               start_button.setTitle("停止", for: .normal)
+               pre_button.isEnabled = false
+               next_button.isEnabled = false
+               pre_button.setTitleColor(UIColor.gray, for: .normal)
+               next_button.setTitleColor(UIColor.gray, for: .normal)
+                  }
+        }
+        //停止状態
+        else if (on_off_fg == 1) {
+                self.timer.invalidate()   // タイマーを停止する
+                self.timer = nil          // startTimer() の self.timer == nil で判断するために、 self.timer = nil としておく
+                start_button.setTitle("再生", for: .normal)
+                pre_button.isEnabled = true
+                next_button.isEnabled = true
+            pre_button.setTitleColor(UIColor.link, for: .normal)
+                next_button.setTitleColor(UIColor.link, for: .normal)
+            }
+    }
+    //タイマーに応じて画像を切り替える
+    @objc func Change_img(_ timer: Timer) {
+       self.timer_sec += 2
+      //タイマーに応じて画像が変わる
+      if timer_sec % 14 == 0 {
+            viewimage.image = pictures[0]
+      } else if timer_sec % 12 == 0 {
+            viewimage.image = pictures[6]
+      } else if timer_sec % 10 == 0 {
+            viewimage.image = pictures[5]
+      } else if timer_sec % 8 == 0 {
+            viewimage.image = pictures[4]
+      } else if timer_sec % 6 == 0 {
+            viewimage.image = pictures[3]
+      } else if timer_sec % 4 == 0 {
+            viewimage.image = pictures[2]
+      } else if timer_sec % 2 == 0 {
+            viewimage.image = pictures[1]
+      }
+    }
     //画像をタップしたら遷移する
     @IBAction func onTapAction(_ sender: Any) {
         performSegue(withIdentifier: "TapAction", sender: nil)
@@ -64,7 +108,6 @@ class ViewController: UIViewController {
         let resultViewController:ResultViewController = segue.destination as! ResultViewController
         resultViewController.x = viewimage.image
     }
-
     //遷移先画面で戻るを押下すると戻る用
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
     }
