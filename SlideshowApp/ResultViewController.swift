@@ -22,4 +22,10 @@ class ResultViewController: UIViewController {
         largeimage.image = x
         largeimage.contentMode = UIView.ContentMode.scaleAspectFill
     }
+    
+    //次画面に画像を引き継ぐ
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let ViewController:ViewController = segue.destination as! ViewController
+        ViewController.return_img = largeimage.image
+    }
 }

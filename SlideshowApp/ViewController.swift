@@ -25,6 +25,8 @@ class ViewController: UIViewController {
      var timer: Timer!
      var timer_sec: Int = 0
      var on_off_fg: Int = 1
+    // 遷移先から戻った際の画像引き継ぎ用（最初はてきとう）
+    var return_img = UIImage(named: "a_1")
     
     // 初期表示
     override func viewDidLoad() {
@@ -111,6 +113,11 @@ class ViewController: UIViewController {
     //遷移先画面で戻るを押下すると戻る用
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
     }
-
+    //前画面から引き継いだ値を入れる
+       override func ResultviewDidLoad() {
+           super.viewDidLoad()
+           viewimage.image = return_img
+           viewimage.contentMode = UIView.ContentMode.scaleAspectFill
+       }
 }
 
