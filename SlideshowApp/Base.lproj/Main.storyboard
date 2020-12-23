@@ -32,11 +32,17 @@
                                 <rect key="frame" x="307" y="404" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="次へ"/>
+                                <connections>
+                                    <action selector="next_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qu4-15-zQr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCu-BL-Z8b">
                                 <rect key="frame" x="81" y="404" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="前へ"/>
+                                <connections>
+                                    <action selector="pre_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H9k-ni-nVP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

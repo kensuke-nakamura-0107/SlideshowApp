@@ -25,11 +25,35 @@ class ViewController: UIViewController {
      var timer: Timer!
      var timer_sec: Int = 0
      var on_off_fg: Int = 1
-
+    
+    // 初期表示
     override func viewDidLoad() {
         super.viewDidLoad()
         viewimage.image = pictures[0]
     }
+    // 次へボタンアクション
+    @IBAction func next_action(_ sender: Any) {
+        pcount += 1
+        pcount %= 7
+        viewimage.image = pictures[pcount]
+        viewimage.contentMode = UIView.ContentMode.scaleAspectFill
+    }
+    // 前へボタンアクション
+    @IBAction func pre_action(_ sender: Any) {
+        if pcount >= 1 {
+               pcount -= 1
+               pcount %= 7
+               viewimage.image = pictures[pcount]
+               }
+               else {
+                   pcount += 6
+                   pcount %= 7
+                   viewimage.image = pictures[pcount]
+                   viewimage.contentMode = UIView.ContentMode.scaleAspectFill
+               }
+    }
+    
+    
     
     //画像をタップしたら遷移する
     @IBAction func onTapAction(_ sender: Any) {
