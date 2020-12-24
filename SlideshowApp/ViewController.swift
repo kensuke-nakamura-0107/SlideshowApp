@@ -87,23 +87,10 @@ class ViewController: UIViewController {
     }
     //タイマーに応じて画像を切り替える
     @objc func Change_img(_ timer: Timer) {
-       self.timer_sec += 2
-      //タイマーに応じて画像が変わる
-      if timer_sec % 14 == 0 {
-            viewimage.image = pictures[0]
-      } else if timer_sec % 12 == 0 {
-            viewimage.image = pictures[6]
-      } else if timer_sec % 10 == 0 {
-            viewimage.image = pictures[5]
-      } else if timer_sec % 8 == 0 {
-            viewimage.image = pictures[4]
-      } else if timer_sec % 6 == 0 {
-            viewimage.image = pictures[3]
-      } else if timer_sec % 4 == 0 {
-            viewimage.image = pictures[2]
-      } else if timer_sec % 2 == 0 {
-            viewimage.image = pictures[1]
-      }
+        pcount += 1
+        pcount %= 7
+        viewimage.image = pictures[pcount]
+        viewimage.contentMode = UIView.ContentMode.scaleAspectFill
     }
     
     //画像をタップしたら遷移する
@@ -115,8 +102,12 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (self.timer !== nil)  {
             self.timer.invalidate()   // タイマーを停止する
-            self.timer = nil 
+            self.timer = nil
             start_button.setTitle("再生", for: .normal)
+            pre_button.isEnabled = true
+            next_button.isEnabled = true
+            pre_button.setTitleColor(UIColor.link, for: .normal)
+            next_button.setTitleColor(UIColor.link, for: .normal)
             return_fg = 1
         }
         //画像を引き継ぐ
