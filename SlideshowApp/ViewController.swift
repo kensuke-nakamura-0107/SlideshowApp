@@ -25,8 +25,8 @@ class ViewController: UIViewController {
      var timer: Timer!
      var timer_sec: Int = 0
      var on_off_fg: Int = 1
-    // 遷移先から戻った際の画像引き継ぎ用（最初はてきとう）
-    var return_img = UIImage(named: "a_1")
+    // スライドショー中に画像タップで戻ってきた時用の変数
+     var return_fg = 0
     
     // 初期表示
     override func viewDidLoad() {
@@ -56,9 +56,13 @@ class ViewController: UIViewController {
     }
     //再生ボタンアクション
     @IBAction func slideshow(_ sender: Any) {
+        if (return_fg == 1){
+            on_off_fg += 1
+        }
         on_off_fg += 1
         on_off_fg %= 2
-        //再生中
+        return_fg = 0
+        //再生する
         if (on_off_fg == 0) {
         // 動作中のタイマーを1つに保つために、 timer が存在しない場合だけ、タイマーを生成して動作させる
             if (self.timer == nil)  {
@@ -70,14 +74,14 @@ class ViewController: UIViewController {
                next_button.setTitleColor(UIColor.gray, for: .normal)
                   }
         }
-        //停止状態
+        //停止する
         else if (on_off_fg == 1) {
                 self.timer.invalidate()   // タイマーを停止する
                 self.timer = nil          // startTimer() の self.timer == nil で判断するために、 self.timer = nil としておく
                 start_button.setTitle("再生", for: .normal)
                 pre_button.isEnabled = true
                 next_button.isEnabled = true
-            pre_button.setTitleColor(UIColor.link, for: .normal)
+                pre_button.setTitleColor(UIColor.link, for: .normal)
                 next_button.setTitleColor(UIColor.link, for: .normal)
             }
     }
@@ -101,23 +105,26 @@ class ViewController: UIViewController {
             viewimage.image = pictures[1]
       }
     }
+    
     //画像をタップしたら遷移する
     @IBAction func onTapAction(_ sender: Any) {
         performSegue(withIdentifier: "TapAction", sender: nil)
     }
+    
     //次画面に画像を引き継ぐ
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (self.timer !== nil)  {
+            self.timer.invalidate()   // タイマーを停止する
+            self.timer = nil 
+            start_button.setTitle("再生", for: .normal)
+            return_fg = 1
+        }
+        //画像を引き継ぐ
         let resultViewController:ResultViewController = segue.destination as! ResultViewController
         resultViewController.x = viewimage.image
     }
     //遷移先画面で戻るを押下すると戻る用
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
     }
-    //前画面から引き継いだ値を入れる
-       override func ResultviewDidLoad() {
-           super.viewDidLoad()
-           viewimage.image = return_img
-           viewimage.contentMode = UIView.ContentMode.scaleAspectFill
-       }
 }
 
